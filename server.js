@@ -15,11 +15,11 @@ const con = mysql.createConnection(
 
 );
 
-// con.connect(function(err)
-// {
-//     if(err) throw err;
-//     console.log("Connected");
-// });
+con.connect(function(err)
+{
+    if(err) throw err;
+    console.log("Connected");
+});
 
 /*
 var sql = "create table student (id int AUTO_INCREMENT PRIMARY KEY , name varchar(200), password varchar(25))";
@@ -126,100 +126,100 @@ con.query(sql,function(err,result)
 // });
 
 
-con.connect(function(err) {
-    if (err) throw err;
-    console.log('Connected to MySQL database');
+// con.connect(function(err) {
+//     if (err) throw err;
+//     console.log('Connected to MySQL database');
   
-    // Thêm dữ liệu vào bảng AppUser
-    insertAppUser('Thien', 'conggthien17@gmail.com', '0916027170', 'Nam', 'congthien123', 'thienvip123', 1);
-    insertAppUser('Tuan', 'conggthien17@gmail.com', '0916027170', 'Nam', 'huynhanhtuan', 'tuanga123', 1);
+//     // Thêm dữ liệu vào bảng AppUser
+//     insertAppUser('Thien', 'conggthien17@gmail.com', '0916027170', 'Nam', 'congthien123', 'thienvip123', 1);
+//     insertAppUser('Tuan', 'conggthien17@gmail.com', '0916027170', 'Nam', 'huynhanhtuan', 'tuanga123', 1);
   
-    // Thêm dữ liệu vào bảng Board
-    insertBoard('Công việc trong ngày', 1, 1, '2023-09-22');
+//     // Thêm dữ liệu vào bảng Board
+//     insertBoard('Công việc trong ngày', 1, 1, '2023-09-22');
 
-    insertBoard('Công việc trong tuần', 1, '1', '2023-09-22');
-    insertBoard('Dự án cá nhân', 1, '2', '2023-09-22');
+//     insertBoard('Công việc trong tuần', 1, '1', '2023-09-22');
+//     insertBoard('Dự án cá nhân', 1, '2', '2023-09-22');
   
-    // Thêm dữ liệu vào bảng List
-    insertList('List name', 0.4, '1');
-    insertList('List name', 0.5, '1');
-    insertList('List name', 0.7, '2');
-    insertList('List name', 0.3, '2');
-    insertList('List name', 1.0, '3');
+//     // Thêm dữ liệu vào bảng List
+//     insertList('List name', 0.4, '1');
+//     insertList('List name', 0.5, '1');
+//     insertList('List name', 0.7, '2');
+//     insertList('List name', 0.3, '2');
+//     insertList('List name', 1.0, '3');
   
-    // Thêm dữ liệu vào bảng CardOfList
-    insertCardOfList('Card name', 'Ghi chú', 1, '1');
-    insertCardOfList('Card name', 'Ghi chú 2', 0, '1');
-    insertCardOfList('Card name', 'Ghi chú', 0, '2');
-    insertCardOfList('Card name', 'Ghi chú', 1, '3');
-    insertCardOfList('Card name', 'Ghi chú', 0, '4');
-    insertCardOfList('Card name', 'Ghi chú', 1, '5');
-    insertCardOfList('Card name', 'Ghi chú', 1, '5');
+//     // Thêm dữ liệu vào bảng CardOfList
+//     insertCardOfList('Card name', 'Ghi chú', 1, '1');
+//     insertCardOfList('Card name', 'Ghi chú 2', 0, '1');
+//     insertCardOfList('Card name', 'Ghi chú', 0, '2');
+//     insertCardOfList('Card name', 'Ghi chú', 1, '3');
+//     insertCardOfList('Card name', 'Ghi chú', 0, '4');
+//     insertCardOfList('Card name', 'Ghi chú', 1, '5');
+//     insertCardOfList('Card name', 'Ghi chú', 1, '5');
   
-    // Thêm dữ liệu vào bảng Reminder
-    insertReminder('Ghi chú trong này', '------------', '2023-02-12', 2, 1, '1');
-    insertReminder('Ghi chú trong này', '------------', '2023-02-12', 3, 0, '2');
-    insertReminder('Ghi chú trong này', '------------', '2023-02-12', 1, 1, '3');
-    insertReminder('Ghi chú trong này', '------------', '2023-02-12', 5, 1, '4');
-    insertReminder('Ghi chú trong này', '------------', '2023-02-12', 5, 0, '5');
-  
-
-  
-    // Đóng kết nối sau khi thêm dữ liệu
-    con.end();
-  });
-  
-  function insertAppUser(fullname, email, phoneNumber, sex, username, userPassword, userStatus) {
-    const sql = "INSERT INTO AppUser (fullname, email, phoneNumber, sex, username, userPassword, userStatus) VALUES (?, ?, ?, ?, ?, ?, ?)";
-    const values = [fullname, email, phoneNumber, sex, username, userPassword, userStatus];
-  
-    con.query(sql, values, function(err, result) {
-      if (err) throw err;
-      console.log(`Inserted a new row into AppUser with ID: ${result.insertId}`);
-    });
-  }
+//     // Thêm dữ liệu vào bảng Reminder
+//     insertReminder('Ghi chú trong này', '------------', '2023-02-12', 2, 1, '1');
+//     insertReminder('Ghi chú trong này', '------------', '2023-02-12', 3, 0, '2');
+//     insertReminder('Ghi chú trong này', '------------', '2023-02-12', 1, 1, '3');
+//     insertReminder('Ghi chú trong này', '------------', '2023-02-12', 5, 1, '4');
+//     insertReminder('Ghi chú trong này', '------------', '2023-02-12', 5, 0, '5');
   
 
-  function insertBoard(boardName, userID, boardStatus, createdDate) {
-    const sql = "INSERT INTO Board (boardName, userID, boardStatus, createdDate) VALUES (?, ?, ?, ?)";
-    const values = [boardName, userID, boardStatus, createdDate];
   
-    con.query(sql, values, function(err, result) {
-      if (err) throw err;
-      console.log(`Inserted a new row into Board with ID: ${result.insertId}`);
-    });
-  }
+//     // Đóng kết nối sau khi thêm dữ liệu
+//     con.end();
+//   });
+  
+//   function insertAppUser(fullname, email, phoneNumber, sex, username, userPassword, userStatus) {
+//     const sql = "INSERT INTO AppUser (fullname, email, phoneNumber, sex, username, userPassword, userStatus) VALUES (?, ?, ?, ?, ?, ?, ?)";
+//     const values = [fullname, email, phoneNumber, sex, username, userPassword, userStatus];
+  
+//     con.query(sql, values, function(err, result) {
+//       if (err) throw err;
+//       console.log(`Inserted a new row into AppUser with ID: ${result.insertId}`);
+//     });
+//   }
+  
+
+//   function insertBoard(boardName, userID, boardStatus, createdDate) {
+//     const sql = "INSERT INTO Board (boardName, userID, boardStatus, createdDate) VALUES (?, ?, ?, ?)";
+//     const values = [boardName, userID, boardStatus, createdDate];
+  
+//     con.query(sql, values, function(err, result) {
+//       if (err) throw err;
+//       console.log(`Inserted a new row into Board with ID: ${result.insertId}`);
+//     });
+//   }
   
   
-  function insertList(listName, process, boardID) {
-    const sql = "INSERT INTO List (listName, process, boardID) VALUES (?, ?, ?)";
-    const values = [listName, process, boardID];
+//   function insertList(listName, process, boardID) {
+//     const sql = "INSERT INTO List (listName, process, boardID) VALUES (?, ?, ?)";
+//     const values = [listName, process, boardID];
   
-    con.query(sql, values, function(err, result) {
-      if (err) throw err;
-      console.log(`Inserted a new row into List with ID: ${result.insertId}`);
-    });
-  }
+//     con.query(sql, values, function(err, result) {
+//       if (err) throw err;
+//       console.log(`Inserted a new row into List with ID: ${result.insertId}`);
+//     });
+//   }
   
-  function insertCardOfList(cardName, content, cardStatus, listID) {
-    const sql = "INSERT INTO CardOfList (cardName, content, cardStatus, listID) VALUES (?, ?, ?, ?)";
-    const values = [cardName, content, cardStatus, listID];
+//   function insertCardOfList(cardName, content, cardStatus, listID) {
+//     const sql = "INSERT INTO CardOfList (cardName, content, cardStatus, listID) VALUES (?, ?, ?, ?)";
+//     const values = [cardName, content, cardStatus, listID];
   
-    con.query(sql, values, function(err, result) {
-      if (err) throw err;
-      console.log(`Inserted a new row into CardOfList with ID: ${result.insertId}`);
-    });
-  }
+//     con.query(sql, values, function(err, result) {
+//       if (err) throw err;
+//       console.log(`Inserted a new row into CardOfList with ID: ${result.insertId}`);
+//     });
+//   }
   
-  function insertReminder(reminderName, reminderContent, dueDate, repeatCount, reminderStatus) {
-    const sql = "INSERT INTO Reminder (reminderName, reminderContent, dueDate, repeatCount, reminderStatus) VALUES (?, ?, ?, ?, ?)";
-    const values = [reminderName, reminderContent, dueDate, repeatCount, reminderStatus];
+//   function insertReminder(reminderName, reminderContent, dueDate, repeatCount, reminderStatus) {
+//     const sql = "INSERT INTO Reminder (reminderName, reminderContent, dueDate, repeatCount, reminderStatus) VALUES (?, ?, ?, ?, ?)";
+//     const values = [reminderName, reminderContent, dueDate, repeatCount, reminderStatus];
   
-    con.query(sql, values, function(err, result) {
-      if (err) throw err;
-      console.log(`Inserted a new row into Reminder with ID: ${result.insertId}`);
-    });
-  }
+//     con.query(sql, values, function(err, result) {
+//       if (err) throw err;
+//       console.log(`Inserted a new row into Reminder with ID: ${result.insertId}`);
+//     });
+//   }
   
 
 
@@ -263,39 +263,38 @@ app.post('/app/addStudent',function(req,res,next)
 );
 
 
-// app.post('/app/checkLogin', (req, res) => {
-//     const username = req.body.username;
-//     const password = req.body.password;
 
-//     const sql = `SELECT * FROM student WHERE name = "${username}" AND password = "${password}"`;
-//     con.query(sql, (err, result) => {
-//         if (err) throw err;
 
-//         if (result.length > 0) {
-//             // Đăng nhập thành công
-//             res.json({ 'status': 'success', 'message': 'Login successful' });
-//         } else {
-//             // Sai tên người dùng hoặc mật khẩu
-//             res.json({ 'status': 'error', 'message': 'Invalid username or password' });
-//         }
-//     });
-// });
 
-app.get('/app/checkLogin', (req, res) => {
-    const username = req.query.name;
-    const password1 = req.query.password; 
 
     // const username = ("Nhien2");
     // const password1 = ("2"); 
 
+app.get('/app/checkLogin', (req, res) => {
+    const username = req.query.name;
+    const password1 = req.query.password; 
+    const sql = `SELECT * FROM student WHERE name = "${username}" AND password = "${password1}"`;
+    con.query(sql, (err, result) => {
+        if (err) throw err;
+        if (result.length > 0) {        
+            res.status(200).json({ 'message': 'Login successful' });
+        } else {
+            res.status(404).json({ 'message': 'Invalid username or password' });
+        }        
+    });
+});
+
+app.post('/app/checkLogin', (req, res) => {
+    const username = req.body.name;
+    const password1 = req.body.password; 
     const sql = `SELECT * FROM student WHERE name = "${username}" AND password = "${password1}"`;
     con.query(sql, (err, result) => {
         if (err) throw err;
 
-        if (result.length > 0) {
-            res.json({ 'status': 200, 'message': 'Login successful' });
+        if (result.length > 0) {        
+            res.status(200).json({ 'message': 'Login successful' });
         } else {
-            res.json({ 'status': 404, 'message': 'Invalid username or password' });
+            res.status(404).json({ 'message': 'Invalid username or password' });
         }
     });
 });
